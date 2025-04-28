@@ -34,7 +34,7 @@ export default function Navbar() {
             <Link href='#services'>Services</Link>
           </li>
           <li className='hover:text-[goldenrod] transition-all duration-300 hover:scale-105'>
-            <Link href='#contact'>Contact</Link>
+            <Link href='#dev'>Developer</Link>
           </li>
           <li className='hover:text-[goldenrod] transition-all duration-300 hover:scale-105'>
             <Link href='#gallery'>Gallery</Link>

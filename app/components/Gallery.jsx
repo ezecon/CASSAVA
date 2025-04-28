@@ -1,37 +1,19 @@
-import Image from "next/image";
+
+export default function Contact() {
 
 
-export default function Gallery() {
-  
-    return (
-      <div id="gallery" className="mb-60 py-20 h-full rounded-2xl">
-        <h1 className="font-mono text-4xl sm:text-5xl md:text-6xl text-center m-10">
-              Gallery
-        </h1>
-        <div className="discount autoShow">
-        <div className="img-container ">
-          <Image src="/sl-1.png" width={500} height={500} alt="Discount 1" />
+  return (
+    <div className="text-[goldenrod]">
+      <div className="px-4 py-24 md:py-36 md:px-8 lg:px-16">
+        <div className="text-center">
+          <h1 id="contact" className="text-2xl md:text-3xl lg:text-4xl">
+            Gallery
+          </h1>
+          <p className="text-sm md:text-base">Images of cassava diseases</p>
         </div>
-        <div className="img-container ">
-          <Image src="/sl-1.png" width={500} height={500} alt="Discount 1" />
-        </div>
-        <div className="img-container ">
-          <Image src="/sl-1.png" width={500} height={500} alt="Discount 1" />
-        </div>
-        <div className="img-container ">
-          <Image src="/sl-1.png" width={500} height={500} alt="Discount 1" />
-        </div>
-        <div className="img-container ">
-          <Image src="/sl-1.png" width={500} height={500} alt="Discount 1" />
-        </div>
-        <div className="img-container ">
-          <Image src="/sl-1.png" width={500} height={500} alt="Discount 1" />
-        </div>
-        <div className="img-container ">
-          <Image src="/sl-1.png" width={500} height={500} alt="Discount 1" />
-        </div>
+
+
       </div>
-      </div>
-    )
-  }
-  
+    </div>
+  );
+}
