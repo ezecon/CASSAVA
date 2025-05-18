@@ -1,18 +1,95 @@
+import { useState } from "react";
 
-export default function Contact() {
+const galleryData = [
+  {
+    label: "Healthy",
+    images: [
+      { imageLink: "1.jpg" },
+      { imageLink: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?..." },
+      { imageLink: "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?..." },
+      { imageLink: "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg" },
+      { imageLink: "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg" },
+      { imageLink: "https://images.unsplash.com/photo-1620064916958-605375619af8?..." },
+    ],
+  },
+  {
+    label: "Brown Streak Disease",
+    images: [
+      { imageLink: "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?..." },
+      { imageLink: "https://images.unsplash.com/photo-1432462770865-65b70566d673?..." },
+      { imageLink: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?..." },
+      { imageLink: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?..." },
+      { imageLink: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?..." },
+      { imageLink: "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?..." },
+    ],
+  },
+  {
+    label: "Green Mottle",
+    images: [
+      { imageLink: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?..." },
+      { imageLink: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?..." },
+      { imageLink: "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?..." },
+      { imageLink: "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg" },
+      { imageLink: "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg" },
+      { imageLink: "https://images.unsplash.com/photo-1620064916958-605375619af8?..." },
+    ],
+  },
+  {
+    label: "Bacterial Blight",
+    images: [
+      { imageLink: "https://images.unsplash.com/photo-1499696010180-025ef6e1a8f9?..." },
+      { imageLink: "https://images.unsplash.com/photo-1432462770865-65b70566d673?..." },
+      { imageLink: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?..." },
+      { imageLink: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?..." },
+      { imageLink: "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?..." },
+      { imageLink: "https://images.unsplash.com/photo-1682407186023-12c70a4a35e0?..." },
+    ],
+  },
+  {
+    label: "Mosaic Disease",
+    images: [
+      { imageLink: "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/blog5.jpg" },
+      { imageLink: "https://material-taillwind-pro-ct-tailwind-team.vercel.app/img/content2.jpg" },
+      { imageLink: "https://images.unsplash.com/photo-1620064916958-605375619af8?..." },
+    ],
+  },
+];
 
+export default function Gallery() {
+  const [activeTab, setActiveTab] = useState("Healthy");
+
+  const currentTab = galleryData.find(tab => tab.label === activeTab);
 
   return (
-    <div className="text-[goldenrod]">
-      <div className="px-4 py-24 md:py-36 md:px-8 lg:px-16">
-        <div className="text-center">
-          <h1 id="contact" className="text-2xl md:text-3xl lg:text-4xl">
-            Gallery
-          </h1>
-          <p className="text-sm md:text-base">Images of cassava diseases</p>
-        </div>
+    <div className="w-full max-w-6xl mx-auto px-4 py-10">
+      {/* Tabs Header */}
+      <div className="flex flex-wrap gap-2 justify-center mb-6 mt-20">
+        {galleryData.map((tab) => (
+          <button
+            key={tab.label}
+            onClick={() => setActiveTab(tab.label)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              activeTab === tab.label
+                ? "bg-blue-600 text-white shadow-lg"
+                : "bg-gray-200 text-gray-700 hover:bg-blue-100"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
-
+      {/* Images Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {currentTab?.images.map((img, idx) => (
+          <div key={idx} className="w-full overflow-hidden rounded-lg shadow-md">
+            <img
+              src={img.imageLink}
+              alt={`Gallery ${idx}`}
+              className="w-full h-60 object-cover hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

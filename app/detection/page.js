@@ -2,13 +2,9 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 import { useRef } from "react";
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import ParticlesEffect from "./components/ParticlesEffect";
-import Developer from "./components/Developer";
-import Services from "./components/Services";
-import About from "./components/About";
-import Gallery from "./components/Gallery";
+import ParticlesEffect from "../components/ParticlesEffect";
+import Drone from "../components/Drone";
+import Detection from "../components/Detection";
 
 function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
@@ -38,7 +34,7 @@ export default function Home() {
       restDelta: 0.001,
   })
 
-  const components = [ HeroSection,About, Services,  Gallery, Developer]
+  const components = [Detection]
 
   return (
       <div>
@@ -46,7 +42,6 @@ export default function Home() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,255,255,0.05)_1px,transparent_1px),linear-gradient(rgba(0,255,255,0.05)_1px,transparent_1px)] bg-[size:64px_64px] animate-grid-flow"></div>
 
 
-      <nav className="fixed w-full z-10 "><Navbar/></nav>
          <main className="">
             {components.map((Component, index) => (
                   <SectionComponent key={index} Component={Component} id={index + 1} />
