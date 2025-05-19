@@ -1,3 +1,4 @@
+'use client';
 import { useState } from "react";
 
 const galleryData = [
@@ -70,7 +71,7 @@ export default function Gallery() {
             onClick={() => setActiveTab(tab.label)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
               activeTab === tab.label
-                ? "bg-blue-600 text-white shadow-lg"
+                ? "bg-[goldenrod] text-white shadow-lg"
                 : "bg-gray-200 text-gray-700 hover:bg-blue-100"
             }`}
           >

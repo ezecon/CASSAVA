@@ -6,37 +6,44 @@ export default function Detection() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
-  };
+const handleImageUpload = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
-  const handleImageUpload = async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+  setIsLoading(true);
+  setError(null);
+  setPredictedClass(null);
 
-    setIsLoading(true);
-    setError(null);
-    setPredictedClass(null);
+  const formData = new FormData();
+  formData.append("image", file);
 
-    const formData = new FormData();
-    formData.append("image", file);
+  try {
+    const response = await fetch("http://127.0.0.1:8000/api/upload/", {
+      method: "POST",
+      body: formData,
+    });
 
-    try {
-      const response = await axios.post("http://127.0.0.1:8000/api/upload/", formData);
-      setPredictedClass(response.data.predicted_class);
-    } catch (error) {
-      setError("Failed to analyze the image. Please try again.");
-    } finally {
-      setIsLoading(false);
+    if (!response.ok) {
+      throw new Error("Failed to analyze image");
     }
-  };
+
+    const data = await response.json();
+    setPredictedClass(data.predicted_class);
+    console.log(data) // Adjust key according to your backend response
+  } catch (err) {
+    setError(err.message || "Something went wrong.");
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   const classLabels = {
-    0: "Normal",
+    0: "Healthy",
     1: "Glaucoma",
     2: "Cataract",
     3: "Retinoblastoma",
-    4: "Diabetic Retinopathy",
+    4: "Mosaic",
   };
 
   return (
@@ -127,15 +134,7 @@ export default function Detection() {
           )}
           
         </div>
-        <div className="w-full max-w-2xl ">
-        {predictedClass !== null && (
-          <div className="border border-cyan-400/30 rounded-lg p-4 backdrop-blur-sm bg-black/30 hover:border-purple-500/50 hover:transform hover:scale-105 transition-all duration-300" >
-              Download the annotated image : 
-              <button className="mx-4 border border-cyan-400/30 p-2 rounded-xl">Download</button>
-          </div>
-        )}
-          
-        </div>
+
         {/* Holographic Lines */}
       <div className="fixed top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-500/50 via-purple-500/50 to-cyan-500/50 animate-pulse"></div>
       <div className="fixed bottom-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500/50 via-cyan-500/50 to-purple-500/50 animate-pulse"></div>
