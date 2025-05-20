@@ -6,7 +6,7 @@ export default function Developers() {
     return (
       <div id="dev" className="mb-60 py-20 h-full rounded-2xl">
         <h1 className=" text-center text-3xl md:text-4xl lg:text-5xl my-10 text-[goldenrod] drop-shadow-md">
-            DDEVELOPERS
+            DEVELOPERS
         </h1>
    
 
@@ -15,7 +15,7 @@ export default function Developers() {
             <div className="flex flex-col md:flex-row justify-center items-center gap-10">
               <div className="flex flex-col items-center">
                 <Image
-                  src="econ.jpg"
+                  src="./econ.jpg"
                   alt="Picture of the author"
                   width={200}
                   height={200}

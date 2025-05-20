@@ -63,6 +63,9 @@ export default function Gallery() {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-10">
+      <h1 className=" text-center text-3xl md:text-4xl lg:text-5xl my-10 text-[goldenrod] drop-shadow-md">
+            GALLERY
+        </h1>
       {/* Tabs Header */}
       <div className="flex flex-wrap gap-2 justify-center mb-6 mt-20">
         {galleryData.map((tab) => (
