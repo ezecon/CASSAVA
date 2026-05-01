@@ -40,7 +40,7 @@ const handleImageUpload = async (e) => {
 
   const classLabels = {
     0: "Healthy",
-    1: "Glaucoma",
+    1: "Cassava___bacterial_blight",
     2: "Cataract",
     3: "Retinoblastoma",
     4: "Mosaic",
